@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
-from bert import generate_gradients, analyze_document_sentiment
+from bert import generate_gradients, predict_sentiment
 
 STOCKS = ['APPL', 'MSFT', 'GOOG', 'META', 'NVIDIA', 'TSM', 'AVGO', 'CRM']
 NAMES = ['Apple Inc', 'Microsoft Incorportaion', 'Google Inc','Meta Platform Inc.', 'NVIDIA Inc', 'Taiwan Semiconductor Manufacturing', 'Broadcom Inc.', 'Salesforce, Inc.']
@@ -134,7 +134,7 @@ with row2_col2:
                 text = page.get_text()
                 contents += text
             doc.close()
-    result = analyze_document_sentiment(contents)
+    result = predict_sentiment(contents)
     label = result[0]['label']
     score = result[0]['score']
     st.markdown('#### Sentiment of the Document')

@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from bert import generate_gradients, analyze_document_sentiment
+from bert import generate_gradients, predict_sentiment
 from datetime import datetime
 
 STOCKS = ['NEE', 'DUK', 'SO', 'XEL', 'AEP', 'CEG', 'SRE']
@@ -133,7 +133,7 @@ with row2_col2:
                 text = page.get_text()
                 contents += text
             doc.close()
-    result = analyze_document_sentiment(contents)
+    result = predict_sentiment(contents)
     label = result[0]['label']
     score = result[0]['score']
     st.markdown('#### Sentiment of the Document')

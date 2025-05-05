@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 
-from bert import generate_gradients, analyze_document_sentiment
+from bert import generate_gradients, predict_sentiment
 from datetime import datetime
 
 # Define stocks to track
@@ -136,7 +136,7 @@ with row2_col2:
                 text = page.get_text()
                 contents += text
             doc.close()
-    result = analyze_document_sentiment(contents)
+    result = predict_sentiment(contents)
     label = result[0]['label']
     score = result[0]['score']
     st.markdown('#### Sentiment of the Document')

@@ -5,7 +5,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 from datetime import datetime
-from bert import generate_gradients, analyze_document_sentiment
+from bert import generate_gradients, predict_sentiment
 
 STOCKS = ['LLY', 'UNH', 'JNJ', 'ABBV', 'NVO', 'MRK', 'ABT']
 NAMES = ['Eli Lily and Company', 'UnitedHealth Group Incorporated', 'Johnson & Johnson', 'AbbVie Inc.', 'Novo Nordisk A/S', 'Merck & Co., Inc', 'Abbott Laboratories']
@@ -132,7 +132,7 @@ with row2_col2:
                 text = page.get_text()
                 contents += text
             doc.close()
-    result = analyze_document_sentiment(contents)
+    result = predict_sentiment(contents)
     label = result[0]['label']
     score = result[0]['score']
     st.markdown('#### Sentiment of the Document')
